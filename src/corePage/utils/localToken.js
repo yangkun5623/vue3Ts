@@ -1,0 +1,37 @@
+/**
+ * 自定义 token 操作
+ * @author LiQingSong
+ */
+import localforage from 'localforage';
+import settings from '@/corePage/config/settings';
+/**
+ * 获取本地Token
+ */
+export const getToken = async () => {
+    return await localforage.getItem(settings.siteTokenKey);
+};
+/**
+ * 设置存储本地Token
+ */
+export const setToken = async (token) => {
+    try {
+        await localforage.setItem(settings.siteTokenKey, token);
+        return true;
+    }
+    catch (error) {
+        return false;
+    }
+};
+/**
+ * 移除本地Token
+ */
+export const removeToken = async () => {
+    try {
+        await localforage.removeItem(settings.siteTokenKey);
+        return true;
+    }
+    catch (error) {
+        return false;
+    }
+};
+//# sourceMappingURL=localToken.js.map
